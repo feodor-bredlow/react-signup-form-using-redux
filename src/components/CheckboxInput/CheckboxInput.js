@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { connect } from 'react-redux';
+import { updateShowAddress } from '../../redux/actions.js';
 
 import styles from './CheckboxInput.module.scss';
 
 const CheckboxInput = (props) => {
 	const handleCheckboxChange = (event) => {
-		props.setShowAddress(event.currentTarget.checked);
+		props.updateShowAddress(event.currentTarget.checked);
 	};
 	return (
 		<div>
@@ -26,6 +27,8 @@ const CheckboxInput = (props) => {
 CheckboxInput.propTypes = {
 	checked: PropTypes.bool,
 	setShowAddress: PropTypes.func,
+	updateShowAddress: PropTypes.func,
+	label: PropTypes.string,
 };
 
-export default CheckboxInput;
+export default connect(null, { updateShowAddress })(CheckboxInput);

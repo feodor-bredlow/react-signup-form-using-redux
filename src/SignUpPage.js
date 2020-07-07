@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import styles from './SignUpPage.module.scss';
 import DefaultForm from './components/DefaultForm/DefaultForm.js';
 import DefaultInput from './components/DefaultInput/DefaultInput.js';
 import CheckboxInput from './components/CheckboxInput/CheckboxInput.js';
 
-const SignUpPage = () => {
-	const [showAddress, setShowAddress] = useState(true);
-
+const SignUpPage = (props) => {
 	return (
 		<div className={styles.wrapper}>
 			<DefaultForm>
@@ -18,10 +17,9 @@ const SignUpPage = () => {
 				<DefaultInput label="Password (repeat)" />
 				<CheckboxInput
 					label="Show address"
-					setShowAddress={setShowAddress}
-					checked={showAddress}
+					checked={props.address.showAddress}
 				/>
-				{showAddress && (
+				{props.address.showAddress && (
 					<>
 						<DefaultInput label="Street" />
 						<DefaultInput label="House number" />
@@ -35,4 +33,8 @@ const SignUpPage = () => {
 	);
 };
 
-export default SignUpPage;
+const mapStateToProps = (state) => {
+	return { address: state.address };
+};
+
+export default connect(mapStateToProps)(SignUpPage);
