@@ -1,0 +1,45 @@
+$transitionTime: 0.2s;
+
+.inputOuterWrapper {
+	position: relative;
+	background-color: lightgray;
+	padding: 30px 25px 15px;
+	border: 1px solid #e6e1e1;
+	box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	&:hover,
+	&:active,
+	&:focus {
+		border-color: turquoise;
+		.formLabel {
+			color: darkgray;
+		}
+	}
+	transition: all 0.2s ease-in-out;
+
+	&.itemDisabled {
+		cursor: default;
+	}
+}
+
+.inputError {
+}
+
+.formLabel {
+	position: absolute;
+	font-size: 12px;
+	color: grey;
+	transition: all 0.2s ease-in-out;
+	top: 10px;
+}
+
+.inputElem {
+	width: 100%;
+	border: none;
+	outline: none;
+	color: #5e5e5e;
+	background-color: transparent;
+	font-size: 20px;
+	padding-bottom: 1px;
+	cursor: text;
+}
