@@ -1,7 +1,11 @@
-import { UPDATE_SHOW_ADDRESS } from '../actionTypes';
+import { UPDATE_SHOW_ADDRESS, UPDATE_STREET } from '../actionTypes';
 
 const initialState = {
 	showAddress: true,
+	street: '',
+	houseNr: '',
+	zip: '',
+	city: '',
 };
 
 const address = (state = initialState, action) => {
@@ -11,6 +15,13 @@ const address = (state = initialState, action) => {
 			return {
 				...state,
 				showAddress: showAddress,
+			};
+		}
+		case UPDATE_STREET: {
+			const { street } = action.payload;
+			return {
+				...state,
+				street: street,
 			};
 		}
 		default:
