@@ -1,4 +1,10 @@
-import { UPDATE_SHOW_ADDRESS, UPDATE_STREET } from '../actionTypes';
+import {
+	UPDATE_SHOW_ADDRESS,
+	UPDATE_STREET,
+	UPDATE_HOUSENR,
+	UPDATE_ZIP,
+	UPDATE_CITY,
+} from '../actionTypes';
 
 const initialState = {
 	showAddress: true,
@@ -22,6 +28,27 @@ const address = (state = initialState, action) => {
 			return {
 				...state,
 				street: street,
+			};
+		}
+		case UPDATE_HOUSENR: {
+			const { houseNr } = action.payload;
+			return {
+				...state,
+				houseNr: houseNr,
+			};
+		}
+		case UPDATE_ZIP: {
+			const { zip } = action.payload;
+			return {
+				...state,
+				zip: zip,
+			};
+		}
+		case UPDATE_CITY: {
+			const { city } = action.payload;
+			return {
+				...state,
+				city: city,
 			};
 		}
 		default:

@@ -67,6 +67,8 @@ const DefaultInput = (props) => {
 							className={styles.inputElem}
 							name="Text1"
 							rows="5"
+							value={props.value}
+							onChange={handleInputChange}
 						></textarea>
 					)}
 				</div>

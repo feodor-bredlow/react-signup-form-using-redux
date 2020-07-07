@@ -14,12 +14,36 @@ const SignUpPage = (props) => {
 	return (
 		<div className={styles.wrapper}>
 			<DefaultForm>
-				<DefaultInput label="First name" />
-				<DefaultInput label="Last name" />
-				<DefaultInput label="Nick name" />
-				<DefaultInput label="Email" />
-				<DefaultInput label="Password" />
-				<DefaultInput label="Repeat Password" />
+				<DefaultInput
+					label="First name"
+					value={props.store.user.firstName}
+					updateStore={props.actions.updateFirstName}
+				/>
+				<DefaultInput
+					label="Last name"
+					value={props.store.user.lastName}
+					updateStore={props.actions.updateLastName}
+				/>
+				<DefaultInput
+					label="Nick name"
+					value={props.store.user.nickName}
+					updateStore={props.actions.updateNickName}
+				/>
+				<DefaultInput
+					label="Email"
+					value={props.store.user.email}
+					updateStore={props.actions.updateEmail}
+				/>
+				<DefaultInput
+					label="Password"
+					value={props.store.user.password}
+					updateStore={props.actions.updatePassword}
+				/>
+				<DefaultInput
+					label="Repeat Password"
+					value={props.store.user.repeatPassword}
+					updateStore={props.actions.updateRepeatPassword}
+				/>
 				<CheckboxInput
 					label="Show address"
 					checked={props.store.address.showAddress}
@@ -34,18 +58,26 @@ const SignUpPage = (props) => {
 						<DefaultInput
 							label="House number"
 							value={props.store.address.houseNr}
+							updateStore={props.actions.updateHouseNr}
 						/>
 						<DefaultInput
 							label="ZIP"
 							value={props.store.address.zip}
+							updateStore={props.actions.updateZip}
 						/>
 						<DefaultInput
 							label="City"
 							value={props.store.address.city}
+							updateStore={props.actions.updateCity}
 						/>
 					</>
 				)}
-				<DefaultInput label="Additional information" multiLine />
+				<DefaultInput
+					label="Additional information"
+					multiLine
+					value={props.store.additionalInfo.additionalInfo}
+					updateStore={props.actions.updateAdditionalInfo}
+				/>
 			</DefaultForm>
 		</div>
 	);
