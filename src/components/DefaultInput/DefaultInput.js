@@ -53,14 +53,23 @@ const DefaultInput = (props) => {
 							{props.label}
 						</label>
 					)}
-					<input
-						type={getType()}
-						className={styles.inputElem}
-						placeholder={props.placeholder}
-						disabled={props.disabled}
-						value={val}
-						onChange={handleInputChange}
-					/>
+					{!props.multiLine && (
+						<input
+							type={getType()}
+							className={styles.inputElem}
+							placeholder={props.placeholder}
+							disabled={props.disabled}
+							value={val}
+							onChange={handleInputChange}
+						/>
+					)}
+					{props.multiLine && (
+						<textarea
+							className={styles.inputElem}
+							name="Text1"
+							rows="5"
+						></textarea>
+					)}
 				</div>
 			</div>
 		</div>
