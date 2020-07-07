@@ -19,17 +19,30 @@ const SignUpPage = (props) => {
 				<DefaultInput label="Nick name" />
 				<DefaultInput label="Email" />
 				<DefaultInput label="Password" />
-				<DefaultInput label="Password (repeat)" />
+				<DefaultInput label="Repeat Password" />
 				<CheckboxInput
 					label="Show address"
 					checked={props.store.address.showAddress}
 				/>
 				{props.store.address.showAddress && (
 					<>
-						<DefaultInput label="Street" />
-						<DefaultInput label="House number" />
-						<DefaultInput label="ZIP" />
-						<DefaultInput label="City" />
+						<DefaultInput
+							label="Street"
+							value={props.store.address.street}
+							updateStore={props.actions.updateStreet}
+						/>
+						<DefaultInput
+							label="House number"
+							value={props.store.address.houseNr}
+						/>
+						<DefaultInput
+							label="ZIP"
+							value={props.store.address.zip}
+						/>
+						<DefaultInput
+							label="City"
+							value={props.store.address.city}
+						/>
 					</>
 				)}
 				<DefaultInput label="Additional information" multiLine />
@@ -40,6 +53,7 @@ const SignUpPage = (props) => {
 
 SignUpPage.propTypes = {
 	store: PropTypes.object,
+	actions: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {

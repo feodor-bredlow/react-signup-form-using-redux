@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import styles from './DefaultInput.module.scss';
 
 const DefaultInput = (props) => {
-	const [val, setVal] = useState('');
 	const [err, setErr] = useState(false);
 
 	const handleInputChange = (event) => {
@@ -25,7 +24,7 @@ const DefaultInput = (props) => {
 	const setInputVal = (event) => {
 		setErr(false);
 
-		setVal(event.target.value);
+		props.updateStore && props.updateStore(event.target.value);
 	};
 
 	const getType = () => {
@@ -59,7 +58,7 @@ const DefaultInput = (props) => {
 							className={styles.inputElem}
 							placeholder={props.placeholder}
 							disabled={props.disabled}
-							value={val}
+							value={props.value}
 							onChange={handleInputChange}
 						/>
 					)}
@@ -82,6 +81,7 @@ DefaultInput.propTypes = {
 	placeholder: PropTypes.string,
 	disabled: PropTypes.bool,
 	regex: PropTypes.instanceOf(RegExp),
+	updateStore: PropTypes.func,
 };
 
 export default DefaultInput;
