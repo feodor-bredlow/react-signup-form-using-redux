@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as actions from './redux/actions';
+
 import styles from './SignUpPage.module.scss';
 import DefaultForm from './components/DefaultForm/DefaultForm.js';
 import DefaultInput from './components/DefaultInput/DefaultInput.js';
@@ -17,9 +22,9 @@ const SignUpPage = (props) => {
 				<DefaultInput label="Password (repeat)" />
 				<CheckboxInput
 					label="Show address"
-					checked={props.address.showAddress}
+					checked={props.store.address.showAddress}
 				/>
-				{props.address.showAddress && (
+				{props.store.address.showAddress && (
 					<>
 						<DefaultInput label="Street" />
 						<DefaultInput label="House number" />
@@ -33,8 +38,16 @@ const SignUpPage = (props) => {
 	);
 };
 
-const mapStateToProps = (state) => {
-	return { address: state.address };
+SignUpPage.propTypes = {
+	store: PropTypes.object,
 };
 
-export default connect(mapStateToProps)(SignUpPage);
+const mapStateToProps = (state) => {
+	return { store: state };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators(actions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);
