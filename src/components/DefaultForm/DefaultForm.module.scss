@@ -1,0 +1,17 @@
+.submitButton {
+	display: block;
+	width: 120px;
+	height: 30px;
+	border-radius: 5px;
+	outline: none;
+	text-align: center;
+	cursor: pointer;
+	margin: 10px auto;
+
+	&:disabled {
+		cursor: not-allowed;
+		> .buttonText {
+			opacity: 0.5;
+		}
+	}
+}
