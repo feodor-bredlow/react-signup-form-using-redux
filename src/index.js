@@ -4,9 +4,14 @@ import './index.css';
 import SignUpPage from './SignUpPage';
 import * as serviceWorker from './serviceWorker';
 
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 ReactDOM.render(
 	<React.StrictMode>
-		<SignUpPage />
+		<Provider store={store}>
+			<SignUpPage />
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
