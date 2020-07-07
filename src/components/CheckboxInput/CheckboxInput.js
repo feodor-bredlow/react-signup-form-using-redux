@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateShowAddress } from '../../redux/actions.js';
+import { bindActionCreators } from 'redux';
+
+import * as actions from '../../redux/actions';
 
 import styles from './CheckboxInput.module.scss';
 
 const CheckboxInput = (props) => {
 	const handleCheckboxChange = (event) => {
-		props.updateShowAddress(event.currentTarget.checked);
+		props.actions.updateShowAddress(event.currentTarget.checked);
 	};
 	return (
 		<div>
@@ -29,6 +31,11 @@ CheckboxInput.propTypes = {
 	setShowAddress: PropTypes.func,
 	updateShowAddress: PropTypes.func,
 	label: PropTypes.string,
+	actions: PropTypes.object,
 };
 
-export default connect(null, { updateShowAddress })(CheckboxInput);
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators(actions, dispatch),
+});
+
+export default connect(null, mapDispatchToProps)(CheckboxInput);
