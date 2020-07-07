@@ -1,3 +1,4 @@
 import { combineReducers } from 'redux';
+import address from './address';
 
-export default combineReducers({});
+export default combineReducers({ address });
