@@ -38,7 +38,6 @@ const CheckboxInput = (props) => {
 };
 
 CheckboxInput.propTypes = {
-	setShowAddress: PropTypes.func,
 	updateShowAddress: PropTypes.func,
 	label: PropTypes.string,
 	identifier: PropTypes.string.isRequired,
