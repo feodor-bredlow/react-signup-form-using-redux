@@ -1,4 +1,5 @@
 import { USER_INFO } from '../constants';
+import * as regex from './regex';
 
 export const isSubmitDisabled = (userInfo) => {
 	return true;
@@ -17,7 +18,7 @@ export const isNickNameNotValid = (nickName) => {
 };
 
 export const isEmailNotValid = (email) => {
-	return inputIsEmpty(email);
+	return inputIsEmpty(email) || !regex.email().test(email);
 };
 
 export const isPasswordNotValid = (password) => {

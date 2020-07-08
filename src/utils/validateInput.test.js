@@ -56,3 +56,18 @@ describe('nickName input field', () => {
 		expect(validateInput.isNickNameNotValid('c')).toBeFalsy();
 	});
 });
+
+describe('email input field', () => {
+	it('isEmailNotValid should return true if input is empty', () => {
+		expect(validateInput.isEmailNotValid('')).toBeTruthy();
+	});
+	it('isEmailNotValid should return true if input is not empty', () => {
+		expect(validateInput.isEmailNotValid('c')).toBeTruthy();
+	});
+	it('isEmailNotValid should return true if input is not a valid email', () => {
+		expect(validateInput.isEmailNotValid('cgd@as')).toBeTruthy();
+	});
+	it('isEmailNotValid should return false if input is a valid email', () => {
+		expect(validateInput.isEmailNotValid('asdf@asdf.cw')).toBeFalsy();
+	});
+});
