@@ -18,6 +18,7 @@ const DefaultForm = (props) => {
 				value="Submit"
 				className={styles.submitButton}
 				disabled={validateInput.isSubmitDisabled(props.userInfo)}
+				data-testid="button-submit"
 			/>
 		</form>
 	);
