@@ -1,10 +1,6 @@
 import { USER_INFO } from '../constants';
 import * as regex from './regex';
 
-export const isSubmitDisabled = (userInfo) => {
-	return true;
-};
-
 export const isLastNameNotValid = (lastName) => {
 	return lastName.length < 2;
 };
@@ -47,4 +43,21 @@ export const isTextAreaNotValid = (textArea) => {
 
 export const inputIsEmpty = (input) => {
 	return input.length < 1;
+};
+
+export const isSubmitDisabled = (userInfo) => {
+	return (
+		isLastNameNotValid(userInfo[USER_INFO.LAST_NAME]) ||
+		isFirstNameNotValid(userInfo[USER_INFO.FIRST_NAME]) ||
+		isNickNameNotValid(userInfo[USER_INFO.NICK_NAME]) ||
+		isEmailNotValid(userInfo[USER_INFO.EMAIL]) ||
+		isPasswordNotValid(
+			userInfo[USER_INFO.PASSWORD],
+			userInfo[USER_INFO.REPEAT_PASSWORD]
+		) ||
+		isStreetNotValid(userInfo[USER_INFO.STREET]) ||
+		isZipNotValid(userInfo[USER_INFO.ZIP]) ||
+		isCityNotValid(userInfo[USER_INFO.CITY]) ||
+		isTextAreaNotValid(userInfo[USER_INFO.ADDITIONAL_INFO])
+	);
 };

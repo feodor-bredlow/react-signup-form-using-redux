@@ -142,3 +142,25 @@ describe('zip input field', () => {
 		expect(validateInput.isZipNotValid('24352')).toBeFalsy();
 	});
 });
+
+describe('form submit button', () => {
+	it('isSubmitDisabled shoud return true if at least one of the inputs is not valid', () => {
+		expect(validateInput.isSubmitDisabled(userInfo)).toBeTruthy();
+	});
+	it('isSubmitDisabled shoud return false if all inputs are valid', () => {
+		userInfo = {
+			[USER_INFO.LAST_NAME]: 'asdf',
+			[USER_INFO.FIRST_NAME]: 'qwer',
+			[USER_INFO.NICK_NAME]: 'j',
+			[USER_INFO.EMAIL]: 'qwe@asdf.de',
+			[USER_INFO.PASSWORD]: 'hgd3s5s',
+			[USER_INFO.REPEAT_PASSWORD]: 'hgd3s5s',
+			[USER_INFO.STREET]: 'street',
+			[USER_INFO.HOUSE_NR]: '23s',
+			[USER_INFO.ZIP]: '66622',
+			[USER_INFO.CITY]: 'stadt',
+			[USER_INFO.ADDITIONAL_INFO]: 'some info',
+		};
+		expect(validateInput.isSubmitDisabled(userInfo)).toBeFalsy();
+	});
+});
