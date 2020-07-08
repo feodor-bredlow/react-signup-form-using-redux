@@ -1,17 +1,2 @@
-// user
-export const UPDATE_FIRST_NAME = 'UPDATE_FIRST_NAME';
-export const UPDATE_LAST_NAME = 'UPDATE_LAST_NAME';
-export const UPDATE_NICK_NAME = 'UPDATE_NICK_NAME';
-export const UPDATE_EMAIL = 'UPDATE_EMAIL';
-export const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
-export const UPDATE_REPEAT_PASSWORD = 'UPDATE_REPEAT_PASSWORD';
-
-// address
+export const UPDATE_STATE = 'UPDATE_STATE';
 export const UPDATE_SHOW_ADDRESS = 'UPDATE_SHOW_ADDRESS';
-export const UPDATE_STREET = 'UPDATE_STREET';
-export const UPDATE_HOUSENR = 'UPDATE_HOUSENR';
-export const UPDATE_ZIP = 'UPDATE_ZIP';
-export const UPDATE_CITY = 'UPDATE_CITY';
-
-// additional info
-export const UPDATE_ADDITIONAL_INFO = 'UPDATE_ADDITIONAL_INFO';
