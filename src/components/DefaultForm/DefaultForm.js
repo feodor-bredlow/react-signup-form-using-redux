@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import styles from './DefaultForm.module.scss';
+import * as validateInput from '../../utils/validateInput';
 
 const DefaultForm = (props) => {
 	const handleFormSubmit = (event) => {
@@ -15,6 +17,7 @@ const DefaultForm = (props) => {
 				type="submit"
 				value="Submit"
 				className={styles.submitButton}
+				disabled={validateInput.isSubmitDisabled(props.userInfo)}
 			/>
 		</form>
 	);
@@ -22,6 +25,11 @@ const DefaultForm = (props) => {
 
 DefaultForm.propTypes = {
 	children: PropTypes.any,
+	userInfo: PropTypes.object,
 };
 
-export default DefaultForm;
+const mapStateToProps = (state) => {
+	return { userInfo: state.userInfo };
+};
+
+export default connect(mapStateToProps)(DefaultForm);
