@@ -49,6 +49,7 @@ const SignUpPage = (props) => {
 						<DefaultInput
 							label="House number"
 							identifier={USER_INFO.HOUSE_NR}
+							notRequired
 						/>
 						<DefaultInput label="ZIP" identifier={USER_INFO.ZIP} />
 						<DefaultInput

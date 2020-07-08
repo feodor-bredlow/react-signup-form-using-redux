@@ -63,7 +63,7 @@ const DefaultInput = (props) => {
 				>
 					{props.label && (
 						<label className={styles.formLabel}>
-							{props.label}
+							{props.label} {!props.notRequired && <span>*</span>}
 						</label>
 					)}
 					{!props.multiLine && (
