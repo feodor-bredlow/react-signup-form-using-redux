@@ -4,40 +4,40 @@ export const isSubmitDisabled = (userInfo) => {
 	return true;
 };
 
-export const isLastNameValid = (lastName) => {
-	return lastName.length < 1;
+export const isLastNameNotValid = (lastName) => {
+	return inputIsEmpty(lastName);
 };
 
-export const isFirstNameValid = () => {
-	return false;
+export const isFirstNameNotValid = (firstName) => {
+	return inputIsEmpty(firstName);
 };
 
-export const isNickNameValid = () => {
-	return false;
+export const isNickNameNotValid = (nickName) => {
+	return inputIsEmpty(nickName);
 };
 
-export const isEmailValid = () => {
-	return false;
+export const isEmailNotValid = (email) => {
+	return inputIsEmpty(email);
 };
 
-export const isPasswordValid = () => {
-	return false;
+export const isPasswordNotValid = (password) => {
+	return inputIsEmpty(password);
 };
 
-export const isStreetValid = () => {
-	return false;
+export const isStreetNotValid = (street) => {
+	return inputIsEmpty(street);
 };
 
-export const isZipValid = () => {
-	return false;
+export const isZipNotValid = (zip) => {
+	return inputIsEmpty(zip);
 };
 
-export const isCityValid = () => {
-	return false;
+export const isCityNotValid = (city) => {
+	return inputIsEmpty(city);
 };
 
-export const isTextAreaValid = () => {
-	return false;
+export const isTextAreaNotValid = (textArea) => {
+	return inputIsEmpty(textArea);
 };
 
 export const inputIsEmpty = (input) => {

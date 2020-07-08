@@ -15,11 +15,11 @@ let userInfo = {
 	[USER_INFO.ADDITIONAL_INFO]: '',
 };
 
-describe('inputIsNonEmpty', () => {
-	it('should return false if input is empty', () => {
+describe('inputIsEmpty', () => {
+	it('should return true if input is empty', () => {
 		expect(validateInput.inputIsEmpty('')).toBeTruthy();
 	});
-	it('should return true if input is non-empty', () => {
+	it('should return false if input is non-empty', () => {
 		expect(validateInput.inputIsEmpty('asdf123')).toBeFalsy();
 	});
 });
