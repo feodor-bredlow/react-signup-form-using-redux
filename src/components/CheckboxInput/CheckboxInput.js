@@ -13,7 +13,7 @@ const CheckboxInput = (props) => {
 		if (sessionStorageValue) {
 			props.actions.updateShowAddress(sessionStorageValue === 'true');
 		}
-	}, []);
+	}, [props.actions, sessionStorageValue]);
 
 	const handleCheckboxChange = (event) => {
 		window.sessionStorage.setItem(

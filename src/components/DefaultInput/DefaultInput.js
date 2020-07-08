@@ -14,7 +14,7 @@ const DefaultInput = (props) => {
 		if (sessionStorageValue) {
 			props.actions.updateState(props.identifier, sessionStorageValue);
 		}
-	}, []);
+	}, [props.actions, props.identifier, sessionStorageValue]);
 
 	const [err, setErr] = useState(false);
 
