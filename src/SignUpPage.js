@@ -14,7 +14,7 @@ import CheckboxInput from './components/CheckboxInput/CheckboxInput.js';
 
 const SignUpPage = (props) => {
 	return (
-		<div className={styles.wrapper}>
+		<div className={styles.wrapper} data-testid="signup-form">
 			<DefaultForm>
 				<DefaultInput
 					label="Last name"
