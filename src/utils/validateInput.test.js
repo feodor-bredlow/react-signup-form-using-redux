@@ -71,3 +71,25 @@ describe('email input field', () => {
 		expect(validateInput.isEmailNotValid('asdf@asdf.cw')).toBeFalsy();
 	});
 });
+
+describe('password input field', () => {
+	it('isPasswordNotValid should return true if password is empty', () => {
+		expect(validateInput.isPasswordNotValid('')).toBeTruthy();
+	});
+	it('isPasswordNotValid should return true if password less than 6 characters long', () => {
+		expect(validateInput.isPasswordNotValid('as23d')).toBeTruthy();
+	});
+	it('isPasswordNotValid should return true if password contains less than 2 numbers', () => {
+		expect(validateInput.isPasswordNotValid('as2sdgf')).toBeTruthy();
+	});
+	it('isPasswordNotValid should return true if password and repeat password dont match', () => {
+		expect(
+			validateInput.isPasswordNotValid('fg65ffff', 'fg65f5ff')
+		).toBeTruthy();
+	});
+	it('isPasswordNotValid should return false if password is at least 6 characters long, has at least 2 numbers and matches repeatPassword', () => {
+		expect(
+			validateInput.isPasswordNotValid('5aasdf2ag', '5aasdf2ag')
+		).toBeFalsy();
+	});
+});

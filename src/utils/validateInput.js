@@ -21,8 +21,12 @@ export const isEmailNotValid = (email) => {
 	return inputIsEmpty(email) || !regex.email().test(email);
 };
 
-export const isPasswordNotValid = (password) => {
-	return inputIsEmpty(password);
+export const isPasswordNotValid = (password, repeatPassword) => {
+	return (
+		password.length < 6 ||
+		!regex.twoDigits().test(password) ||
+		password !== repeatPassword
+	);
 };
 
 export const isStreetNotValid = (street) => {
