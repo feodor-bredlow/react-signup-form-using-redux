@@ -42,11 +42,7 @@ const DefaultInput = (props) => {
 	};
 
 	const getType = () => {
-		if (
-			props.type === 'email' ||
-			props.type === 'password' ||
-			props.type === 'tel'
-		) {
+		if (props.type === 'email' || props.type === 'password') {
 			return props.type;
 		} else {
 			return 'text';

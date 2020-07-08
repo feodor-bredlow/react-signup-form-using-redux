@@ -28,14 +28,20 @@ const SignUpPage = (props) => {
 					label="Nick name"
 					identifier={USER_INFO.NICK_NAME}
 				/>
-				<DefaultInput label="Email" identifier={USER_INFO.EMAIL} />
+				<DefaultInput
+					label="Email"
+					identifier={USER_INFO.EMAIL}
+					type="email"
+				/>
 				<DefaultInput
 					label="Password"
 					identifier={USER_INFO.PASSWORD}
+					type="password"
 				/>
 				<DefaultInput
 					label="Repeat Password"
 					identifier={USER_INFO.REPEAT_PASSWORD}
+					type="password"
 				/>
 				<CheckboxInput
 					label="Show address"
