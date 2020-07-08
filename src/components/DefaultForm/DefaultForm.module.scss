@@ -1,12 +1,17 @@
 .submitButton {
 	display: block;
 	width: 120px;
-	height: 30px;
+	height: 40px;
 	border-radius: 5px;
 	outline: none;
+	border-radius: 15px;
+	border-width: 1px;
+	border-color: #969696;
+	color: #474747;
 	text-align: center;
 	cursor: pointer;
 	margin: 10px auto;
+	font-size: 16px;
 
 	&:disabled {
 		cursor: not-allowed;
