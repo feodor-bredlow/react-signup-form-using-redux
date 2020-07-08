@@ -5,3 +5,7 @@ export const email = () => {
 export const twoDigits = () => {
 	return /(?=(.*\d){2})/;
 };
+
+export const digit = () => {
+	return /^\d*$/;
+};
