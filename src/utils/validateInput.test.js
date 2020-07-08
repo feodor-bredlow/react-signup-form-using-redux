@@ -35,3 +35,15 @@ describe('lastName input field', () => {
 		expect(validateInput.isLastNameNotValid('2c')).toBeFalsy();
 	});
 });
+
+describe('firstName input field', () => {
+	it('isFirstNameNotValid should return true if input is empty', () => {
+		expect(validateInput.isFirstNameNotValid('')).toBeTruthy();
+	});
+	it('isFirstNameNotValid should return true if input is smaller thant 2 characters', () => {
+		expect(validateInput.isFirstNameNotValid('2')).toBeTruthy();
+	});
+	it('isFirstNameNotValid should return false if input is at least 2 characters', () => {
+		expect(validateInput.isFirstNameNotValid('2c')).toBeFalsy();
+	});
+});

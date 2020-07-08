@@ -9,7 +9,7 @@ export const isLastNameNotValid = (lastName) => {
 };
 
 export const isFirstNameNotValid = (firstName) => {
-	return inputIsEmpty(firstName);
+	return firstName.length < 2;
 };
 
 export const isNickNameNotValid = (nickName) => {
