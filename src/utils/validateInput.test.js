@@ -93,3 +93,27 @@ describe('password input field', () => {
 		).toBeFalsy();
 	});
 });
+
+describe('street input field', () => {
+	it('isStreetNotValid should return true if input is empty', () => {
+		expect(validateInput.isStreetNotValid('')).toBeTruthy();
+	});
+	it('isStreetNotValid should return true if input is smaller thant 4 characters', () => {
+		expect(validateInput.isStreetNotValid('fgd')).toBeTruthy();
+	});
+	it('isStreetNotValid should return false if input is at least 4 characters', () => {
+		expect(validateInput.isStreetNotValid('gwh4')).toBeFalsy();
+	});
+});
+
+describe('city input field', () => {
+	it('isCityNotValid should return true if input is empty', () => {
+		expect(validateInput.isCityNotValid('')).toBeTruthy();
+	});
+	it('isCityNotValid should return true if input is smaller thant 4 characters', () => {
+		expect(validateInput.isCityNotValid('fgd')).toBeTruthy();
+	});
+	it('isCityNotValid should return false if input is at least 4 characters', () => {
+		expect(validateInput.isCityNotValid('gwh4')).toBeFalsy();
+	});
+});

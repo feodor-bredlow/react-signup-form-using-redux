@@ -30,7 +30,7 @@ export const isPasswordNotValid = (password, repeatPassword) => {
 };
 
 export const isStreetNotValid = (street) => {
-	return inputIsEmpty(street);
+	return street.length < 4;
 };
 
 export const isZipNotValid = (zip) => {
@@ -38,7 +38,7 @@ export const isZipNotValid = (zip) => {
 };
 
 export const isCityNotValid = (city) => {
-	return inputIsEmpty(city);
+	return city.length < 4;
 };
 
 export const isTextAreaNotValid = (textArea) => {
