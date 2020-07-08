@@ -47,3 +47,12 @@ describe('firstName input field', () => {
 		expect(validateInput.isFirstNameNotValid('2c')).toBeFalsy();
 	});
 });
+
+describe('nickName input field', () => {
+	it('isNickNameNotValid should return true if input is empty', () => {
+		expect(validateInput.isNickNameNotValid('')).toBeTruthy();
+	});
+	it('isNickNameNotValid should return false if input is not empty', () => {
+		expect(validateInput.isNickNameNotValid('c')).toBeFalsy();
+	});
+});
