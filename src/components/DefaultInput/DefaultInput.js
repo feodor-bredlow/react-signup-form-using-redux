@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import * as actions from '../../redux/actions';
 import styles from './DefaultInput.module.scss';
 
 const DefaultInput = (props) => {
+	const sessionStorageValue = window.sessionStorage.getItem(props.identifier);
+	useEffect(() => {
+		if (sessionStorageValue) {
+			props.actions.updateState(props.identifier, sessionStorageValue);
+		}
+	}, []);
+
 	const [err, setErr] = useState(false);
 
 	const handleInputChange = (event) => {
@@ -24,7 +36,9 @@ const DefaultInput = (props) => {
 	const setInputVal = (event) => {
 		setErr(false);
 
-		props.updateStore && props.updateStore(event.target.value);
+		window.sessionStorage.setItem(props.identifier, event.target.value);
+
+		props.actions.updateState(props.identifier, event.target.value);
 	};
 
 	const getType = () => {
@@ -56,9 +70,7 @@ const DefaultInput = (props) => {
 						<input
 							type={getType()}
 							className={styles.inputElem}
-							placeholder={props.placeholder}
-							disabled={props.disabled}
-							value={props.value}
+							value={props.userInfo[props.identifier]}
 							onChange={handleInputChange}
 						/>
 					)}
@@ -67,7 +79,7 @@ const DefaultInput = (props) => {
 							className={styles.inputElem}
 							name="Text1"
 							rows="5"
-							value={props.value}
+							value={props.userInfo[props.identifier]}
 							onChange={handleInputChange}
 						></textarea>
 					)}
@@ -80,10 +92,19 @@ const DefaultInput = (props) => {
 DefaultInput.propTypes = {
 	type: PropTypes.string,
 	label: PropTypes.string.isRequired,
-	placeholder: PropTypes.string,
-	disabled: PropTypes.bool,
+	identifier: PropTypes.string.isRequired,
 	regex: PropTypes.instanceOf(RegExp),
-	updateStore: PropTypes.func,
+	multiLine: PropTypes.bool,
+	actions: PropTypes.object,
+	userInfo: PropTypes.object,
 };
 
-export default DefaultInput;
+const mapStateToProps = (state) => {
+	return { userInfo: state.userInfo };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+	actions: bindActionCreators(actions, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DefaultInput);

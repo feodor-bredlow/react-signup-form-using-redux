@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import * as actions from './redux/actions';
 
+import { USER_INFO } from './constants';
 import styles from './SignUpPage.module.scss';
 import DefaultForm from './components/DefaultForm/DefaultForm.js';
 import DefaultInput from './components/DefaultInput/DefaultInput.js';
@@ -15,68 +16,51 @@ const SignUpPage = (props) => {
 		<div className={styles.wrapper}>
 			<DefaultForm>
 				<DefaultInput
-					label="First name"
-					value={props.store.user.firstName}
-					updateStore={props.actions.updateFirstName}
+					label="Last name"
+					identifier={USER_INFO.LAST_NAME}
 				/>
 				<DefaultInput
-					label="Last name"
-					value={props.store.user.lastName}
-					updateStore={props.actions.updateLastName}
+					label="First name"
+					identifier={USER_INFO.FIRST_NAME}
 				/>
 				<DefaultInput
 					label="Nick name"
-					value={props.store.user.nickName}
-					updateStore={props.actions.updateNickName}
+					identifier={USER_INFO.NICK_NAME}
 				/>
-				<DefaultInput
-					label="Email"
-					value={props.store.user.email}
-					updateStore={props.actions.updateEmail}
-				/>
+				<DefaultInput label="Email" identifier={USER_INFO.EMAIL} />
 				<DefaultInput
 					label="Password"
-					value={props.store.user.password}
-					updateStore={props.actions.updatePassword}
+					identifier={USER_INFO.PASSWORD}
 				/>
 				<DefaultInput
 					label="Repeat Password"
-					value={props.store.user.repeatPassword}
-					updateStore={props.actions.updateRepeatPassword}
+					identifier={USER_INFO.REPEAT_PASSWORD}
 				/>
 				<CheckboxInput
 					label="Show address"
-					checked={props.store.address.showAddress}
+					identifier={USER_INFO.SHOW_ADDRESS}
 				/>
 				{props.store.address.showAddress && (
 					<>
 						<DefaultInput
 							label="Street"
-							value={props.store.address.street}
-							updateStore={props.actions.updateStreet}
+							identifier={USER_INFO.STREET}
 						/>
 						<DefaultInput
 							label="House number"
-							value={props.store.address.houseNr}
-							updateStore={props.actions.updateHouseNr}
+							identifier={USER_INFO.HOUSE_NR}
 						/>
-						<DefaultInput
-							label="ZIP"
-							value={props.store.address.zip}
-							updateStore={props.actions.updateZip}
-						/>
+						<DefaultInput label="ZIP" identifier={USER_INFO.ZIP} />
 						<DefaultInput
 							label="City"
-							value={props.store.address.city}
-							updateStore={props.actions.updateCity}
+							identifier={USER_INFO.CITY}
 						/>
 					</>
 				)}
 				<DefaultInput
 					label="Additional information"
 					multiLine
-					value={props.store.additionalInfo.additionalInfo}
-					updateStore={props.actions.updateAdditionalInfo}
+					identifier={USER_INFO.ADDITIONAL_INFO}
 				/>
 			</DefaultForm>
 		</div>
