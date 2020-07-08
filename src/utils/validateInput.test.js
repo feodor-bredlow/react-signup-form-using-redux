@@ -117,3 +117,12 @@ describe('city input field', () => {
 		expect(validateInput.isCityNotValid('gwh4')).toBeFalsy();
 	});
 });
+
+describe('additional info textarea input field', () => {
+	it('isTextAreaNotValid should return true if input is empty', () => {
+		expect(validateInput.isTextAreaNotValid('')).toBeTruthy();
+	});
+	it('isTextAreaNotValid should return false if input is not empty', () => {
+		expect(validateInput.isTextAreaNotValid('c')).toBeFalsy();
+	});
+});
