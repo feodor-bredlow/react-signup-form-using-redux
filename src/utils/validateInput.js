@@ -5,7 +5,7 @@ export const isSubmitDisabled = (userInfo) => {
 };
 
 export const isLastNameNotValid = (lastName) => {
-	return inputIsEmpty(lastName);
+	return lastName.length < 2;
 };
 
 export const isFirstNameNotValid = (firstName) => {

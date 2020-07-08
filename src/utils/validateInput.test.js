@@ -23,3 +23,15 @@ describe('inputIsEmpty', () => {
 		expect(validateInput.inputIsEmpty('asdf123')).toBeFalsy();
 	});
 });
+
+describe('lastName input field', () => {
+	it('isLastNameNotValid should return true if input is empty', () => {
+		expect(validateInput.isLastNameNotValid('')).toBeTruthy();
+	});
+	it('isLastNameNotValid should return true if input is smaller thant 2 characters', () => {
+		expect(validateInput.isLastNameNotValid('2')).toBeTruthy();
+	});
+	it('isLastNameNotValid should return false if input is at least 2 characters', () => {
+		expect(validateInput.isLastNameNotValid('2c')).toBeFalsy();
+	});
+});
