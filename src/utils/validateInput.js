@@ -34,7 +34,7 @@ export const isStreetNotValid = (street) => {
 };
 
 export const isZipNotValid = (zip) => {
-	return inputIsEmpty(zip);
+	return zip.length !== 5 || !regex.digit().test(zip);
 };
 
 export const isCityNotValid = (city) => {

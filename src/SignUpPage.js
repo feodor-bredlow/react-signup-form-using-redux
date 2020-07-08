@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as actions from './redux/actions';
+import * as regex from './utils/regex';
 
 import { USER_INFO } from './constants';
 import styles from './SignUpPage.module.scss';
@@ -51,7 +52,12 @@ const SignUpPage = (props) => {
 							identifier={USER_INFO.HOUSE_NR}
 							notRequired
 						/>
-						<DefaultInput label="ZIP" identifier={USER_INFO.ZIP} />
+						<DefaultInput
+							label="ZIP"
+							identifier={USER_INFO.ZIP}
+							maxLength={5}
+							regex={regex.digit()}
+						/>
 						<DefaultInput
 							label="City"
 							identifier={USER_INFO.CITY}

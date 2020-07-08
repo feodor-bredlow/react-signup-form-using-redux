@@ -126,3 +126,19 @@ describe('additional info textarea input field', () => {
 		expect(validateInput.isTextAreaNotValid('c')).toBeFalsy();
 	});
 });
+
+describe('zip input field', () => {
+	it('isZipNotValid should return true if input is empty', () => {
+		expect(validateInput.isZipNotValid('')).toBeTruthy();
+	});
+	it('isZipNotValid should return true if input is not 5 characters long', () => {
+		expect(validateInput.isZipNotValid('asdf')).toBeTruthy();
+		expect(validateInput.isZipNotValid('asgsdf')).toBeTruthy();
+	});
+	it('isZipNotValid should return true if input does not only consist of digits', () => {
+		expect(validateInput.isZipNotValid('234d2')).toBeTruthy();
+	});
+	it('isZipNotValid should return false if input does meet all criterias ', () => {
+		expect(validateInput.isZipNotValid('24352')).toBeFalsy();
+	});
+});

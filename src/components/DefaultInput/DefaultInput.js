@@ -72,6 +72,7 @@ const DefaultInput = (props) => {
 							className={styles.inputElem}
 							value={props.userInfo[props.identifier]}
 							onChange={handleInputChange}
+							maxLength={props.maxLength}
 						/>
 					)}
 					{props.multiLine && (
@@ -97,6 +98,8 @@ DefaultInput.propTypes = {
 	multiLine: PropTypes.bool,
 	actions: PropTypes.object,
 	userInfo: PropTypes.object,
+	maxLength: PropTypes.number,
+	notRequired: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => {
