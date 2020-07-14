@@ -13,12 +13,11 @@ const CheckboxInput = ({
 	showAddress,
 	label,
 }) => {
-	const sessionStorageValue = window.sessionStorage.getItem(identifier);
 	useEffect(() => {
-		if (sessionStorageValue) {
+		const sessionStorageValue = window.sessionStorage.getItem(identifier);
+		sessionStorageValue &&
 			updateShowAddress(sessionStorageValue === 'true');
-		}
-	}, [updateShowAddress, sessionStorageValue]);
+	}, [updateShowAddress, identifier]);
 
 	const handleCheckboxChange = (event) => {
 		window.sessionStorage.setItem(identifier, event.currentTarget.checked);
