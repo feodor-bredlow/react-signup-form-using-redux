@@ -19,12 +19,10 @@ const DefaultInput = ({
 	multiLine,
 	maxLength,
 }) => {
-	const sessionStorageValue = window.sessionStorage.getItem(identifier);
 	useEffect(() => {
-		if (sessionStorageValue) {
-			updateState(identifier, sessionStorageValue);
-		}
-	}, [updateState, identifier, sessionStorageValue]);
+		const sessionStorageValue = window.sessionStorage.getItem(identifier);
+		sessionStorageValue && updateState(identifier, sessionStorageValue);
+	}, [updateState, identifier]);
 
 	const [err, setErr] = useState(false);
 
