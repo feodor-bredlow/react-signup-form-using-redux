@@ -19,7 +19,7 @@ const DefaultForm = ({ children, isSubmitDisabled, handleFormSubmit }) => {
 };
 
 DefaultForm.propTypes = {
-	children: PropTypes.object,
+	children: PropTypes.array,
 	isSubmitDisabled: PropTypes.bool,
 	handleFormSubmit: PropTypes.func,
 };
