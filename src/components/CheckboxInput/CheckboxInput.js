@@ -1,9 +1,5 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import * as actions from '../../redux/actions';
 
 import styles from './CheckboxInput.module.scss';
 
@@ -45,12 +41,4 @@ CheckboxInput.propTypes = {
 	showAddress: PropTypes.bool,
 };
 
-const mapStateToProps = (state) => {
-	return { showAddress: state.address.showAddress };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-	updateShowAddress: bindActionCreators(actions, dispatch).updateShowAddress,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CheckboxInput);
+export default CheckboxInput;

@@ -12,7 +12,7 @@ import DefaultForm from './components/DefaultForm/DefaultForm.js';
 import DefaultInput from './components/DefaultInput/DefaultInput.js';
 import CheckboxInput from './components/CheckboxInput/CheckboxInput.js';
 
-const SignUpPage = ({ userInfo, address, updateState }) => {
+const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 	return (
 		<div className={styles.wrapper} data-testid="signup-form">
 			<DefaultForm>
@@ -58,7 +58,7 @@ const SignUpPage = ({ userInfo, address, updateState }) => {
 				<CheckboxInput
 					label="Show address"
 					identifier={USER_INFO.SHOW_ADDRESS}
-					updateShowAddress
+					updateShowAddress={updateShowAddress}
 					showAddress={address.showAddress}
 				/>
 				{address.showAddress && (
@@ -108,6 +108,7 @@ SignUpPage.propTypes = {
 	userInfo: PropTypes.object,
 	address: PropTypes.object,
 	updateState: PropTypes.func,
+	updateShowAddress: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
