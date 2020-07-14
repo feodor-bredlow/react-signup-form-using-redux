@@ -14,27 +14,15 @@ import Input from './components/Input/Input';
 import Checkbox from './components/Checkbox/Checkbox';
 
 const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
-	const [err, setErr] = useState({
-		isFirstNameErr: false,
-		isLastNameErr: false,
-		isNickNameErr: false,
-		isEmailErr: false,
-		isPasswordErr: false,
-		isRepeatPasswordErr: false,
-		isStreetErr: false,
-		isZipErr: false,
-		isCityErr: false,
-		isAddInfoErr: false,
-		showError: false,
-	});
+	const [showError, setShowError] = useState(false);
 
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
 
 		if (validateInput.isSubmitDisabled(userInfo)['isDisabled']) {
-			setErr({ ...err, showError: true });
+			setShowError(true);
 		} else {
-			setErr({ ...err, showError: false });
+			setShowError(false);
 
 			alert('Input was validated - submit successfully clicked');
 			// define here what happens after successfull form submit
@@ -68,7 +56,7 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 				handleFormSubmit={handleFormSubmit}
 				errorMsg={errorMsg()}
 				showError={
-					err.showError &&
+					showError &&
 					validateInput.isSubmitDisabled(userInfo)['isDisabled']
 				}
 			>
