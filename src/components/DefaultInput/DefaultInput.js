@@ -8,24 +8,31 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../redux/actions';
 import styles from './DefaultInput.module.scss';
 
-const DefaultInput = (props) => {
-	const sessionStorageValue = window.sessionStorage.getItem(props.identifier);
+const DefaultInput = ({
+	actions,
+	userInfo,
+	identifier,
+	regex,
+	type,
+	label,
+	notRequired,
+	multiLine,
+	maxLength,
+}) => {
+	const sessionStorageValue = window.sessionStorage.getItem(identifier);
 	useEffect(() => {
 		if (sessionStorageValue) {
-			props.actions.updateState(props.identifier, sessionStorageValue);
+			actions.updateState(identifier, sessionStorageValue);
 		}
-	}, [props.actions, props.identifier, sessionStorageValue]);
+	}, [actions, identifier, sessionStorageValue]);
 
 	const [err, setErr] = useState(false);
 
 	const handleInputChange = (event) => {
 		event.preventDefault();
 
-		if (props.regex !== undefined) {
-			if (
-				props.regex.test(event.target.value) ||
-				event.target.value === ''
-			) {
+		if (regex !== undefined) {
+			if (regex.test(event.target.value) || event.target.value === '') {
 				setInputVal(event);
 			}
 		} else {
@@ -36,14 +43,14 @@ const DefaultInput = (props) => {
 	const setInputVal = (event) => {
 		setErr(false);
 
-		window.sessionStorage.setItem(props.identifier, event.target.value);
+		window.sessionStorage.setItem(identifier, event.target.value);
 
-		props.actions.updateState(props.identifier, event.target.value);
+		actions.updateState(identifier, event.target.value);
 	};
 
 	const getType = () => {
-		if (props.type === 'email' || props.type === 'password') {
-			return props.type;
+		if (type === 'email' || type === 'password') {
+			return type;
 		} else {
 			return 'text';
 		}
@@ -57,26 +64,26 @@ const DefaultInput = (props) => {
 						[styles.inputError]: err,
 					})}
 				>
-					{props.label && (
+					{label && (
 						<label className={styles.formLabel}>
-							{props.label} {!props.notRequired && <span>*</span>}
+							{label} {!notRequired && <span>*</span>}
 						</label>
 					)}
-					{!props.multiLine && (
+					{!multiLine && (
 						<input
 							type={getType()}
 							className={styles.inputElem}
-							value={props.userInfo[props.identifier]}
+							value={userInfo[identifier]}
 							onChange={handleInputChange}
-							maxLength={props.maxLength}
+							maxLength={maxLength}
 						/>
 					)}
-					{props.multiLine && (
+					{multiLine && (
 						<textarea
 							className={styles.inputElem}
 							name="Text1"
 							rows="5"
-							value={props.userInfo[props.identifier]}
+							value={userInfo[identifier]}
 							onChange={handleInputChange}
 						></textarea>
 					)}
