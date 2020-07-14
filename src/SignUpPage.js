@@ -9,9 +9,9 @@ import * as validateInput from './utils/validateInput';
 
 import { USER_INFO } from './constants';
 import styles from './SignUpPage.module.scss';
-import DefaultForm from './components/DefaultForm/DefaultForm.js';
-import DefaultInput from './components/DefaultInput/DefaultInput.js';
-import CheckboxInput from './components/CheckboxInput/CheckboxInput.js';
+import Form from './components/Form/Form';
+import Input from './components/Input/Input';
+import Checkbox from './components/Checkbox/Checkbox';
 
 const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 	const handleFormSubmit = (event) => {
@@ -23,50 +23,50 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 
 	return (
 		<div className={styles.wrapper} data-testid="signup-form">
-			<DefaultForm
+			<Form
 				isSubmitDisabled={validateInput.isSubmitDisabled(userInfo)}
 				handleFormSubmit={handleFormSubmit}
 			>
-				<DefaultInput
+				<Input
 					label="Last name"
 					identifier={USER_INFO.LAST_NAME}
 					updateState={updateState}
 					value={userInfo[USER_INFO.LAST_NAME]}
 				/>
-				<DefaultInput
+				<Input
 					label="First name"
 					identifier={USER_INFO.FIRST_NAME}
 					updateState={updateState}
 					value={userInfo[USER_INFO.FIRST_NAME]}
 				/>
-				<DefaultInput
+				<Input
 					label="Nick name"
 					identifier={USER_INFO.NICK_NAME}
 					updateState={updateState}
 					value={userInfo[USER_INFO.NICK_NAME]}
 				/>
-				<DefaultInput
+				<Input
 					label="Email"
 					identifier={USER_INFO.EMAIL}
 					type="email"
 					updateState={updateState}
 					value={userInfo[USER_INFO.EMAIL]}
 				/>
-				<DefaultInput
+				<Input
 					label="Password"
 					identifier={USER_INFO.PASSWORD}
 					type="password"
 					updateState={updateState}
 					value={userInfo[USER_INFO.PASSWORD]}
 				/>
-				<DefaultInput
+				<Input
 					label="Repeat Password"
 					identifier={USER_INFO.REPEAT_PASSWORD}
 					type="password"
 					updateState={updateState}
 					value={userInfo[USER_INFO.REPEAT_PASSWORD]}
 				/>
-				<CheckboxInput
+				<Checkbox
 					label="Show address"
 					identifier={USER_INFO.SHOW_ADDRESS}
 					updateShowAddress={updateShowAddress}
@@ -74,20 +74,20 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 				/>
 				{address.showAddress && (
 					<>
-						<DefaultInput
+						<Input
 							label="Street"
 							identifier={USER_INFO.STREET}
 							updateState={updateState}
 							value={userInfo[USER_INFO.STREET]}
 						/>
-						<DefaultInput
+						<Input
 							label="House number"
 							identifier={USER_INFO.HOUSE_NR}
 							notRequired
 							updateState={updateState}
 							value={userInfo[USER_INFO.HOUSE_NR]}
 						/>
-						<DefaultInput
+						<Input
 							label="ZIP"
 							identifier={USER_INFO.ZIP}
 							maxLength={5}
@@ -95,7 +95,7 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 							updateState={updateState}
 							value={userInfo[USER_INFO.ZIP]}
 						/>
-						<DefaultInput
+						<Input
 							label="City"
 							identifier={USER_INFO.CITY}
 							updateState={updateState}
@@ -103,14 +103,14 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 						/>
 					</>
 				)}
-				<DefaultInput
+				<Input
 					label="Additional information"
 					multiLine
 					identifier={USER_INFO.ADDITIONAL_INFO}
 					updateState={updateState}
 					value={userInfo[USER_INFO.ADDITIONAL_INFO]}
 				/>
-			</DefaultForm>
+			</Form>
 		</div>
 	);
 };

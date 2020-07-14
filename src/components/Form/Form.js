@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './DefaultForm.module.scss';
+import styles from './Form.module.scss';
 
-const DefaultForm = ({ children, isSubmitDisabled, handleFormSubmit }) => {
+const Form = ({ children, isSubmitDisabled, handleFormSubmit }) => {
 	return (
 		<form onSubmit={handleFormSubmit}>
 			<div>{children}</div>
@@ -18,10 +18,10 @@ const DefaultForm = ({ children, isSubmitDisabled, handleFormSubmit }) => {
 	);
 };
 
-DefaultForm.propTypes = {
+Form.propTypes = {
 	children: PropTypes.array,
 	isSubmitDisabled: PropTypes.bool,
 	handleFormSubmit: PropTypes.func,
 };
 
-export default DefaultForm;
+export default Form;

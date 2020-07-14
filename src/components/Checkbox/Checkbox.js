@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './CheckboxInput.module.scss';
+import styles from './Checkbox.module.scss';
 
-const CheckboxInput = ({
-	updateShowAddress,
-	identifier,
-	showAddress,
-	label,
-}) => {
+const Checkbox = ({ updateShowAddress, identifier, showAddress, label }) => {
 	useEffect(() => {
 		const sessionStorageValue = window.sessionStorage.getItem(identifier);
 		sessionStorageValue &&
@@ -34,11 +29,11 @@ const CheckboxInput = ({
 	);
 };
 
-CheckboxInput.propTypes = {
+Checkbox.propTypes = {
 	updateShowAddress: PropTypes.func,
 	label: PropTypes.string,
 	identifier: PropTypes.string.isRequired,
 	showAddress: PropTypes.bool,
 };
 
-export default CheckboxInput;
+export default Checkbox;

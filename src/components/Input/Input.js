@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import styles from './DefaultInput.module.scss';
+import styles from './Input.module.scss';
 
-const DefaultInput = ({
+const Input = ({
 	updateState,
 	value,
 	identifier,
@@ -87,7 +87,7 @@ const DefaultInput = ({
 	);
 };
 
-DefaultInput.propTypes = {
+Input.propTypes = {
 	type: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	identifier: PropTypes.string.isRequired,
@@ -99,4 +99,4 @@ DefaultInput.propTypes = {
 	notRequired: PropTypes.bool,
 };
 
-export default DefaultInput;
+export default Input;
