@@ -161,6 +161,8 @@ describe('form submit button', () => {
 			[USER_INFO.CITY]: 'stadt',
 			[USER_INFO.ADDITIONAL_INFO]: 'some info',
 		};
-		expect(validateInput.isSubmitDisabled(userInfo)).toBeFalsy();
+		expect(
+			validateInput.isSubmitDisabled(userInfo)['isDisabled']
+		).toBeFalsy();
 	});
 });

@@ -46,18 +46,50 @@ export const inputIsEmpty = (input) => {
 };
 
 export const isSubmitDisabled = (userInfo) => {
+	return {
+		isDisabled:
+			isLastNameNotValid(userInfo[USER_INFO.LAST_NAME]) ||
+			isFirstNameNotValid(userInfo[USER_INFO.FIRST_NAME]) ||
+			isNickNameNotValid(userInfo[USER_INFO.NICK_NAME]) ||
+			isEmailNotValid(userInfo[USER_INFO.EMAIL]) ||
+			isPasswordNotValid(
+				userInfo[USER_INFO.PASSWORD],
+				userInfo[USER_INFO.REPEAT_PASSWORD]
+			) ||
+			isStreetNotValid(userInfo[USER_INFO.STREET]) ||
+			isZipNotValid(userInfo[USER_INFO.ZIP]) ||
+			isCityNotValid(userInfo[USER_INFO.CITY]) ||
+			isTextAreaNotValid(userInfo[USER_INFO.ADDITIONAL_INFO]),
+		errorFields: {
+			lastName: isLastNameNotValid(userInfo[USER_INFO.LAST_NAME]),
+			firstName: isFirstNameNotValid(userInfo[USER_INFO.FIRST_NAME]),
+			nickName: isNickNameNotValid(userInfo[USER_INFO.NICK_NAME]),
+			email: isEmailNotValid(userInfo[USER_INFO.EMAIL]),
+			password: isPasswordNotValid(
+				userInfo[USER_INFO.PASSWORD],
+				userInfo[USER_INFO.REPEAT_PASSWORD]
+			),
+			street: isStreetNotValid(userInfo[USER_INFO.STREET]),
+			zip: isZipNotValid(userInfo[USER_INFO.ZIP]),
+			city: isCityNotValid(userInfo[USER_INFO.CITY]),
+			additionalInfo: isTextAreaNotValid(
+				userInfo[USER_INFO.ADDITIONAL_INFO]
+			),
+		},
+	};
+};
+
+export const isInitialSubmitDisabled = (userInfo) => {
 	return (
-		isLastNameNotValid(userInfo[USER_INFO.LAST_NAME]) ||
-		isFirstNameNotValid(userInfo[USER_INFO.FIRST_NAME]) ||
-		isNickNameNotValid(userInfo[USER_INFO.NICK_NAME]) ||
-		isEmailNotValid(userInfo[USER_INFO.EMAIL]) ||
-		isPasswordNotValid(
-			userInfo[USER_INFO.PASSWORD],
-			userInfo[USER_INFO.REPEAT_PASSWORD]
-		) ||
-		isStreetNotValid(userInfo[USER_INFO.STREET]) ||
-		isZipNotValid(userInfo[USER_INFO.ZIP]) ||
-		isCityNotValid(userInfo[USER_INFO.CITY]) ||
-		isTextAreaNotValid(userInfo[USER_INFO.ADDITIONAL_INFO])
+		inputIsEmpty(userInfo[USER_INFO.LAST_NAME]) ||
+		inputIsEmpty(userInfo[USER_INFO.FIRST_NAME]) ||
+		inputIsEmpty(userInfo[USER_INFO.NICK_NAME]) ||
+		inputIsEmpty(userInfo[USER_INFO.EMAIL]) ||
+		inputIsEmpty(userInfo[USER_INFO.PASSWORD]) ||
+		inputIsEmpty(userInfo[USER_INFO.REPEAT_PASSWORD]) ||
+		inputIsEmpty(userInfo[USER_INFO.STREET]) ||
+		inputIsEmpty(userInfo[USER_INFO.ZIP]) ||
+		inputIsEmpty(userInfo[USER_INFO.CITY]) ||
+		inputIsEmpty(userInfo[USER_INFO.ADDITIONAL_INFO])
 	);
 };

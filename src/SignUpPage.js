@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -14,18 +14,47 @@ import Input from './components/Input/Input';
 import Checkbox from './components/Checkbox/Checkbox';
 
 const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
+	const [err, setErr] = useState({
+		isFirstNameErr: false,
+		isLastNameErr: false,
+		isNickNameErr: false,
+		isEmailErr: false,
+		isPasswordErr: false,
+		isRepeatPasswordErr: false,
+		isStreetErr: false,
+		isZipErr: false,
+		isCityErr: false,
+		isAddInfoErr: false,
+		showError: false,
+	});
+
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
 
-		// define here what happens after successfull form submit
-		alert('Submit was successfully clicked');
+		if (validateInput.isSubmitDisabled(userInfo)['isDisabled']) {
+			setErr({ ...err, showError: true });
+		} else {
+			setErr({ ...err, showError: false });
+
+			alert('Input was validated - submit successfully clicked');
+			// define here what happens after successfull form submit
+		}
 	};
 
 	return (
 		<div className={styles.wrapper} data-testid="signup-form">
 			<Form
-				isSubmitDisabled={validateInput.isSubmitDisabled(userInfo)}
+				isSubmitDisabled={validateInput.isInitialSubmitDisabled(
+					userInfo
+				)}
 				handleFormSubmit={handleFormSubmit}
+				errorMsg={
+					validateInput.isSubmitDisabled(userInfo)['errorFields']
+				}
+				showError={
+					err.showError &&
+					validateInput.isSubmitDisabled(userInfo)['isDisabled']
+				}
 			>
 				<Input
 					label="Last name"
