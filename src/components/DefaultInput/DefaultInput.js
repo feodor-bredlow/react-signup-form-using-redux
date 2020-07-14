@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import * as actions from '../../redux/actions';
 import styles from './DefaultInput.module.scss';
 
 const DefaultInput = ({
@@ -103,12 +99,4 @@ DefaultInput.propTypes = {
 	notRequired: PropTypes.bool,
 };
 
-const mapStateToProps = (state) => {
-	return { userInfo: state.userInfo };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-	updateState: bindActionCreators(actions, dispatch).updateState,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DefaultInput);
+export default DefaultInput;

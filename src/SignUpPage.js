@@ -12,61 +12,83 @@ import DefaultForm from './components/DefaultForm/DefaultForm.js';
 import DefaultInput from './components/DefaultInput/DefaultInput.js';
 import CheckboxInput from './components/CheckboxInput/CheckboxInput.js';
 
-const SignUpPage = (props) => {
+const SignUpPage = ({ userInfo, address, updateState }) => {
 	return (
 		<div className={styles.wrapper} data-testid="signup-form">
 			<DefaultForm>
 				<DefaultInput
 					label="Last name"
 					identifier={USER_INFO.LAST_NAME}
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
 				<DefaultInput
 					label="First name"
 					identifier={USER_INFO.FIRST_NAME}
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
 				<DefaultInput
 					label="Nick name"
 					identifier={USER_INFO.NICK_NAME}
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
 				<DefaultInput
 					label="Email"
 					identifier={USER_INFO.EMAIL}
 					type="email"
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
 				<DefaultInput
 					label="Password"
 					identifier={USER_INFO.PASSWORD}
 					type="password"
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
 				<DefaultInput
 					label="Repeat Password"
 					identifier={USER_INFO.REPEAT_PASSWORD}
 					type="password"
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
 				<CheckboxInput
 					label="Show address"
 					identifier={USER_INFO.SHOW_ADDRESS}
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
-				{props.store.address.showAddress && (
+				{address.showAddress && (
 					<>
 						<DefaultInput
 							label="Street"
 							identifier={USER_INFO.STREET}
+							updateState={updateState}
+							userInfo={userInfo}
 						/>
 						<DefaultInput
 							label="House number"
 							identifier={USER_INFO.HOUSE_NR}
 							notRequired
+							updateState={updateState}
+							userInfo={userInfo}
 						/>
 						<DefaultInput
 							label="ZIP"
 							identifier={USER_INFO.ZIP}
 							maxLength={5}
 							regex={regex.digit()}
+							updateState={updateState}
+							userInfo={userInfo}
 						/>
 						<DefaultInput
 							label="City"
 							identifier={USER_INFO.CITY}
+							updateState={updateState}
+							userInfo={userInfo}
 						/>
 					</>
 				)}
@@ -74,6 +96,8 @@ const SignUpPage = (props) => {
 					label="Additional information"
 					multiLine
 					identifier={USER_INFO.ADDITIONAL_INFO}
+					updateState={updateState}
+					userInfo={userInfo}
 				/>
 			</DefaultForm>
 		</div>
@@ -81,16 +105,17 @@ const SignUpPage = (props) => {
 };
 
 SignUpPage.propTypes = {
-	store: PropTypes.object,
-	actions: PropTypes.object,
+	userInfo: PropTypes.object,
+	address: PropTypes.object,
+	updateState: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
-	return { store: state };
+	return { userInfo: state.userInfo, address: state.address };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators(actions, dispatch),
+	updateState: bindActionCreators(actions, dispatch).updateState,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);
