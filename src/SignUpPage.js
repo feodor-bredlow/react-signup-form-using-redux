@@ -41,6 +41,24 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 		}
 	};
 
+	const errorMsg = () => {
+		const { errorFields } = validateInput.isSubmitDisabled(userInfo);
+		return (
+			<>
+				{errorFields.lastName && <div>{USER_INFO.LAST_NAME}</div>}
+				{errorFields.firstName && <div>{USER_INFO.FIRST_NAME}</div>}
+				{errorFields.nickName && <div>{USER_INFO.NICK_NAME}</div>}
+				{errorFields.email && <div>{USER_INFO.EMAIL}</div>}
+				{errorFields.password && <div>{USER_INFO.PASSWORD}</div>}
+				{errorFields.street && <div>{USER_INFO.STREET}</div>}
+				{errorFields.city && <div>{USER_INFO.CITY}</div>}
+				{errorFields.zip && <div>{USER_INFO.ZIP}</div>}
+				{errorFields.additionalInfo && (
+					<div>{USER_INFO.ADDITIONAL_INFO}</div>
+				)}
+			</>
+		);
+	};
 	return (
 		<div className={styles.wrapper} data-testid="signup-form">
 			<Form
@@ -48,9 +66,7 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 					userInfo
 				)}
 				handleFormSubmit={handleFormSubmit}
-				errorMsg={
-					validateInput.isSubmitDisabled(userInfo)['errorFields']
-				}
+				errorMsg={errorMsg()}
 				showError={
 					err.showError &&
 					validateInput.isSubmitDisabled(userInfo)['isDisabled']
