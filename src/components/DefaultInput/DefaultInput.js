@@ -6,7 +6,7 @@ import styles from './DefaultInput.module.scss';
 
 const DefaultInput = ({
 	updateState,
-	userInfo,
+	value,
 	identifier,
 	regex,
 	type,
@@ -67,7 +67,7 @@ const DefaultInput = ({
 						<input
 							type={getType()}
 							className={styles.inputElem}
-							value={userInfo[identifier]}
+							value={value}
 							onChange={handleInputChange}
 							maxLength={maxLength}
 						/>
@@ -77,7 +77,7 @@ const DefaultInput = ({
 							className={styles.inputElem}
 							name="Text1"
 							rows="5"
-							value={userInfo[identifier]}
+							value={value}
 							onChange={handleInputChange}
 						></textarea>
 					)}
@@ -94,7 +94,7 @@ DefaultInput.propTypes = {
 	regex: PropTypes.instanceOf(RegExp),
 	multiLine: PropTypes.bool,
 	updateState: PropTypes.func,
-	userInfo: PropTypes.object,
+	value: PropTypes.string,
 	maxLength: PropTypes.number,
 	notRequired: PropTypes.bool,
 };

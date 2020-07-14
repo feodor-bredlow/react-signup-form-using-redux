@@ -31,40 +31,40 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 					label="Last name"
 					identifier={USER_INFO.LAST_NAME}
 					updateState={updateState}
-					userInfo={userInfo}
+					value={userInfo[USER_INFO.LAST_NAME]}
 				/>
 				<DefaultInput
 					label="First name"
 					identifier={USER_INFO.FIRST_NAME}
 					updateState={updateState}
-					userInfo={userInfo}
+					value={userInfo[USER_INFO.FIRST_NAME]}
 				/>
 				<DefaultInput
 					label="Nick name"
 					identifier={USER_INFO.NICK_NAME}
 					updateState={updateState}
-					userInfo={userInfo}
+					value={userInfo[USER_INFO.NICK_NAME]}
 				/>
 				<DefaultInput
 					label="Email"
 					identifier={USER_INFO.EMAIL}
 					type="email"
 					updateState={updateState}
-					userInfo={userInfo}
+					value={userInfo[USER_INFO.EMAIL]}
 				/>
 				<DefaultInput
 					label="Password"
 					identifier={USER_INFO.PASSWORD}
 					type="password"
 					updateState={updateState}
-					userInfo={userInfo}
+					value={userInfo[USER_INFO.PASSWORD]}
 				/>
 				<DefaultInput
 					label="Repeat Password"
 					identifier={USER_INFO.REPEAT_PASSWORD}
 					type="password"
 					updateState={updateState}
-					userInfo={userInfo}
+					value={userInfo[USER_INFO.REPEAT_PASSWORD]}
 				/>
 				<CheckboxInput
 					label="Show address"
@@ -78,14 +78,14 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 							label="Street"
 							identifier={USER_INFO.STREET}
 							updateState={updateState}
-							userInfo={userInfo}
+							value={userInfo[USER_INFO.STREET]}
 						/>
 						<DefaultInput
 							label="House number"
 							identifier={USER_INFO.HOUSE_NR}
 							notRequired
 							updateState={updateState}
-							userInfo={userInfo}
+							value={userInfo[USER_INFO.HOUSE_NR]}
 						/>
 						<DefaultInput
 							label="ZIP"
@@ -93,13 +93,13 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 							maxLength={5}
 							regex={regex.digit()}
 							updateState={updateState}
-							userInfo={userInfo}
+							value={userInfo[USER_INFO.ZIP]}
 						/>
 						<DefaultInput
 							label="City"
 							identifier={USER_INFO.CITY}
 							updateState={updateState}
-							userInfo={userInfo}
+							value={userInfo[USER_INFO.CITY]}
 						/>
 					</>
 				)}
@@ -108,7 +108,7 @@ const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
 					multiLine
 					identifier={USER_INFO.ADDITIONAL_INFO}
 					updateState={updateState}
-					userInfo={userInfo}
+					value={userInfo[USER_INFO.ADDITIONAL_INFO]}
 				/>
 			</DefaultForm>
 		</div>
