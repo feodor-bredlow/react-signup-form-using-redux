@@ -9,7 +9,7 @@ import * as actions from '../../redux/actions';
 import styles from './DefaultInput.module.scss';
 
 const DefaultInput = ({
-	actions,
+	updateState,
 	userInfo,
 	identifier,
 	regex,
@@ -22,9 +22,9 @@ const DefaultInput = ({
 	const sessionStorageValue = window.sessionStorage.getItem(identifier);
 	useEffect(() => {
 		if (sessionStorageValue) {
-			actions.updateState(identifier, sessionStorageValue);
+			updateState(identifier, sessionStorageValue);
 		}
-	}, [actions, identifier, sessionStorageValue]);
+	}, [updateState, identifier, sessionStorageValue]);
 
 	const [err, setErr] = useState(false);
 
@@ -45,7 +45,7 @@ const DefaultInput = ({
 
 		window.sessionStorage.setItem(identifier, event.target.value);
 
-		actions.updateState(identifier, event.target.value);
+		updateState(identifier, event.target.value);
 	};
 
 	const getType = () => {
@@ -99,7 +99,7 @@ DefaultInput.propTypes = {
 	identifier: PropTypes.string.isRequired,
 	regex: PropTypes.instanceOf(RegExp),
 	multiLine: PropTypes.bool,
-	actions: PropTypes.object,
+	updateState: PropTypes.func,
 	userInfo: PropTypes.object,
 	maxLength: PropTypes.number,
 	notRequired: PropTypes.bool,
@@ -110,7 +110,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators(actions, dispatch),
+	updateState: bindActionCreators(actions, dispatch).updateState,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DefaultInput);
