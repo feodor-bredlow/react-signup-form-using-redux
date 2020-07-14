@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import * as actions from './redux/actions';
 import * as regex from './utils/regex';
+import * as validateInput from './utils/validateInput';
 
 import { USER_INFO } from './constants';
 import styles from './SignUpPage.module.scss';
@@ -13,9 +14,19 @@ import DefaultInput from './components/DefaultInput/DefaultInput.js';
 import CheckboxInput from './components/CheckboxInput/CheckboxInput.js';
 
 const SignUpPage = ({ userInfo, address, updateState, updateShowAddress }) => {
+	const handleFormSubmit = (event) => {
+		event.preventDefault();
+
+		// define here what happens after successfull form submit
+		alert('Submit was successfully clicked');
+	};
+
 	return (
 		<div className={styles.wrapper} data-testid="signup-form">
-			<DefaultForm>
+			<DefaultForm
+				isSubmitDisabled={validateInput.isSubmitDisabled(userInfo)}
+				handleFormSubmit={handleFormSubmit}
+			>
 				<DefaultInput
 					label="Last name"
 					identifier={USER_INFO.LAST_NAME}
