@@ -58,8 +58,8 @@ const SignUpPage = ({ userInfo, address, updateState }) => {
 				<CheckboxInput
 					label="Show address"
 					identifier={USER_INFO.SHOW_ADDRESS}
-					updateState={updateState}
-					userInfo={userInfo}
+					updateShowAddress
+					showAddress={address.showAddress}
 				/>
 				{address.showAddress && (
 					<>
@@ -116,6 +116,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
 	updateState: bindActionCreators(actions, dispatch).updateState,
+	updateShowAddress: bindActionCreators(actions, dispatch).updateShowAddress,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);

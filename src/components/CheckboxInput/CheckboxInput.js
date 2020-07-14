@@ -7,20 +7,22 @@ import * as actions from '../../redux/actions';
 
 import styles from './CheckboxInput.module.scss';
 
-const CheckboxInput = (props) => {
-	const sessionStorageValue = window.sessionStorage.getItem(props.identifier);
+const CheckboxInput = ({
+	updateShowAddress,
+	identifier,
+	showAddress,
+	label,
+}) => {
+	const sessionStorageValue = window.sessionStorage.getItem(identifier);
 	useEffect(() => {
 		if (sessionStorageValue) {
-			props.actions.updateShowAddress(sessionStorageValue === 'true');
+			updateShowAddress(sessionStorageValue === 'true');
 		}
-	}, [props.actions, sessionStorageValue]);
+	}, [updateShowAddress, sessionStorageValue]);
 
 	const handleCheckboxChange = (event) => {
-		window.sessionStorage.setItem(
-			props.identifier,
-			event.currentTarget.checked
-		);
-		props.actions.updateShowAddress(event.currentTarget.checked);
+		window.sessionStorage.setItem(identifier, event.currentTarget.checked);
+		updateShowAddress(event.currentTarget.checked);
 	};
 	return (
 		<div>
@@ -28,10 +30,10 @@ const CheckboxInput = (props) => {
 				<input
 					type="checkbox"
 					onChange={handleCheckboxChange}
-					checked={props.store.address.showAddress}
+					checked={showAddress}
 				/>
 
-				{props.label}
+				{label}
 			</div>
 		</div>
 	);
@@ -41,15 +43,15 @@ CheckboxInput.propTypes = {
 	updateShowAddress: PropTypes.func,
 	label: PropTypes.string,
 	identifier: PropTypes.string.isRequired,
-	actions: PropTypes.object,
+	showAddress: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => {
-	return { store: state };
+	return { showAddress: state.address.showAddress };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-	actions: bindActionCreators(actions, dispatch),
+	updateShowAddress: bindActionCreators(actions, dispatch).updateShowAddress,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckboxInput);
